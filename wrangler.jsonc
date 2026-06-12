@@ -1,0 +1,8 @@
+{
+  "name": "tain",
+  "compatibility_date": "2025-04-01",
+  "assets": {
+    "directory": ".",
+    "html_handling": "auto-trailing-slash"
+  }
+}
