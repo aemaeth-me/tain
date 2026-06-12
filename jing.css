@@ -42,15 +42,21 @@ body {
   color: var(--ink);
   font-family: "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif SC",
     "Songti SC", STSong, SimSun, serif;
-  font-size: clamp(1.0625rem, 0.95rem + 0.55vw, 1.25rem);
+  font-size: clamp(1.125rem, 0.95rem + 0.55vw, 1.25rem);
   line-height: 2.05;
   overflow-wrap: break-word;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 main {
   max-width: 32em;
   margin: 0 auto;
   padding: 0 1.35em 4em;
+  padding-inline: max(1.35em, env(safe-area-inset-left))
+    max(1.35em, env(safe-area-inset-right));
 }
 
 p {
@@ -58,6 +64,7 @@ p {
   text-indent: 2em;
   text-align: justify;
   text-justify: inter-character;
+  hanging-punctuation: allow-end;
 }
 
 section {
@@ -248,7 +255,7 @@ h1 {
   color: var(--ruo);
   text-decoration: none;
   letter-spacing: 0.14em;
-  padding-bottom: 0.2em;
+  padding: 0.35em 0.5em 0.3em;
   border-bottom: 1px solid color-mix(in srgb, var(--ruo) 45%, transparent);
 }
 .fan:hover,
@@ -337,6 +344,30 @@ a:focus-visible {
   }
 }
 
+/* ———— 窄幅：签条贴在卷首随卷而去，不悬在字上 ———— */
+
+@media (max-width: 40em) {
+  .qian {
+    position: absolute;
+  }
+  .juanshou {
+    padding: 4.5rem 1.35em 3rem;
+  }
+  section {
+    margin-top: 4.5em;
+  }
+  h2 {
+    margin-bottom: 2.2em;
+  }
+  hr {
+    margin: 2.4em auto;
+  }
+  .juanwei {
+    padding-top: 4em;
+    gap: 3em;
+  }
+}
+
 /* ———— 付梓 ———— */
 
 @media print {
@@ -357,5 +388,9 @@ a:focus-visible {
     background: #fff;
     color: #000;
     font-size: 11pt;
+  }
+  p {
+    orphans: 2;
+    widows: 2;
   }
 }
